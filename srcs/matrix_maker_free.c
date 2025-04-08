@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:52:35 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/08 19:07:10 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/08 19:38:26 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	final_map(char *argv, size_t rows, t_map *game)
 	{
 		line = get_next_line(fd);
 		game->map[i] = ft_strdup(line);
-		// if (ft_strchr(line, '\n'))
-		// 	game->map[i][ft_strlen(line) - 1] = '\0';
+		if (ft_strchr(line, '\n'))
+		 	game->map[i][ft_strlen(line) - 1] = '\0';
 		i++;
 	}
 	game->map[i] = NULL;

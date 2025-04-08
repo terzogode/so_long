@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:45:07 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/08 19:19:10 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/08 19:39:25 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,12 @@ void	check_dimension(t_map *game)
 	i = 0;
 	while (i < game->rows)
 	{
-		printf("%zu\n", game->columns);
-		printf("%zu\n",lenchar(game->map[i], '\n'));
-		if (lenchar(game->map[i], '\n') != game->columns)
+		if (ft_strlen(game->map[i]) != game->columns)
 			errors(game, E_MAP_DIMENSION);
 		i++;
 	}
-	//printf("row: %zu\n", game->rows);
-	//if (i != game->rows)
-		//errors(game, E_MAP_DIMENSION);
+	if (i != game->rows)
+		errors(game, E_MAP_DIMENSION);
 }
 int	check_extension(char *arg, t_map *game)
 {
