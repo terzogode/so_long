@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:45:07 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/08 19:39:25 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/09 16:24:10 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 void	checker(char *argv, t_map *game)
 {
-	//int i = 0;
 	check_extension(argv, game);
 	matrix_maker(argv, game);
 	check_dimension(game);
+	check_wall_lenght(game);
+	check_wall_width(game);
 	check_char(game);
 	check_player_exit(game);
 	check_coll(game);
-	//printf("%zu\n", game->rows);
-	//printf("%zu\n", game->columns);
-	//printf("%zu\n",ft_strlen(game->map[i]));
 	print_map(game);
 }
 
@@ -38,8 +36,6 @@ void	check_dimension(t_map *game)
 			errors(game, E_MAP_DIMENSION);
 		i++;
 	}
-	if (i != game->rows)
-		errors(game, E_MAP_DIMENSION);
 }
 int	check_extension(char *arg, t_map *game)
 {
@@ -63,4 +59,31 @@ int	check_extension(char *arg, t_map *game)
 		i++;
 	}
 	return (1);
+}
+
+void	check_wall_lenght(t_map *game)
+{
+	size_t	j;
+
+	j = 0;
+	while (j < game->columns)
+	{
+		if (game->map[0][j] != '1' || game->map[game->rows - 1][j] != '1')
+				errors(game, E_WALL);
+		j++;
+	}
+}
+
+void	check_wall_width(t_map *game)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < game->rows)
+	{
+		if (game->map[i][0] != '1'|| game->map[i][game->columns])
+			errors(game, E_WALL);
+		i++;
+	}
+
 }

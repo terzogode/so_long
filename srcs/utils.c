@@ -6,24 +6,28 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:12:10 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/08 19:37:08 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/09 17:04:10 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 
-int	open_file(char *argv)
+void open_file(char *argv, t_map *game)
 {
-	int	fd;
-
-	fd = open(argv, O_RDONLY);
-	if (fd == -1)
+	game->fd = open(argv, __O_DIRECTORY);
+	if (game->fd != -1)
 	{
-		perror("Bruh, I can't open that");
+		ft_printf("No ti prego le cartelle no\n");
+		close(game->fd);
 		exit(1);
 	}
-	return (fd);
+	game->fd = open(argv, O_RDONLY);
+	if (game->fd == -1)
+	{
+		ft_printf("Bruh, I can't open that\n");
+		exit(1);
+	}
 }
 
 void	print_map(t_map *game) 

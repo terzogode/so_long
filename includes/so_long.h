@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 17:32:44 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/08 19:17:38 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/09 17:03:42 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct	s_map
 	char	**map;
 	size_t	rows;
 	size_t	columns;
-	void	*mlx;
+	int		fd;
 	int		steps;
 } t_map;
 
@@ -36,16 +36,18 @@ typedef enum e_error
 	E_PLAYER_OR_EXIT,
 	E_COLLECTIBLE,
 	E_MAP_DIMENSION,
+	E_WALL,
+	E_EMPTY_MAP,
 	
 } t_error;
-
 
 //checker
 void	checker(char *argv, t_map *game);
 int		check_extension(char *arg, t_map *game);
-void	check_rect(t_map *game);
-void	check_dimension(t_map *game)
-;
+void	check_dimension(t_map *game);
+void	check_wall_lenght(t_map *game);
+void	check_wall_width(t_map *game);
+
 
 //check_map
 void 	check_char(t_map *game);
@@ -58,7 +60,7 @@ void	final_map(char *argv, size_t rows, t_map *game);
 void	free_maptrix(t_map *game);
 
 //utils
-int		open_file(char *argv);
+void	open_file(char *argv, t_map *game);
 void	print_map(t_map *game);
 size_t	lenchar(char *str, char s);
 

@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:52:35 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/08 19:38:26 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/09 17:12:47 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	final_map(char *argv, size_t rows, t_map *game)
 {
 	size_t	i;
 	char	*line;
-	int		fd;
 
 	line = NULL;
 	i = 0;
@@ -39,23 +38,24 @@ void	final_map(char *argv, size_t rows, t_map *game)
 		ft_printf("I see no map up here");
 		exit (1);
 	}
-	fd = open_file(argv);
+	open_file(argv, game);
 	while (i < rows)
 	{
-		line = get_next_line(fd);
-		game->map[i] = ft_strdup(line);
+		line = get_next_line(game->fd);
+		game->map[i] = line;
 		if (ft_strchr(line, '\n'))
 		 	game->map[i][ft_strlen(line) - 1] = '\0';
 		i++;
 	}
 	game->map[i] = NULL;
-	close(fd);
+	close(game->fd);
+	if (game->map[0] == 0)
+		errors (game, E_EMPTY_MAP);
 }
 
 
 char	**matrix_maker(char *argv, t_map *game)
 {
-	int 	fd;
 	char 	*line;
 	size_t	col;
 	size_t	rows;
@@ -63,17 +63,17 @@ char	**matrix_maker(char *argv, t_map *game)
 	rows = 0;
 	col = 0;
 	line = NULL;
-	fd = open_file(argv);
-	line = get_next_line(fd);
+	open_file(argv, game);
+	line = get_next_line(game->fd);
 	while (line != NULL)
 	{
 		if (rows == 0)
 			col = ft_strlen(line);
 		rows++;
 		free(line);
-		line = get_next_line(fd);
+		line = get_next_line(game->fd);
 	}
-	close(fd);
+	close(game->fd);
 	final_map(argv, rows, game);
 	game->columns = col - 1;
     game->rows = rows;
