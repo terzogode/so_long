@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:52:35 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/09 17:12:47 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/10 14:31:22 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	final_map(char *argv, size_t rows, t_map *game)
 		line = get_next_line(game->fd);
 		game->map[i] = line;
 		if (ft_strchr(line, '\n'))
-		 	game->map[i][ft_strlen(line) - 1] = '\0';
+			game->map[i][ft_strlen(line) - 1] = '\0';
 		i++;
 	}
 	game->map[i] = NULL;
@@ -53,10 +53,9 @@ void	final_map(char *argv, size_t rows, t_map *game)
 		errors (game, E_EMPTY_MAP);
 }
 
-
 char	**matrix_maker(char *argv, t_map *game)
 {
-	char 	*line;
+	char	*line;
 	size_t	col;
 	size_t	rows;
 
@@ -76,6 +75,6 @@ char	**matrix_maker(char *argv, t_map *game)
 	close(game->fd);
 	final_map(argv, rows, game);
 	game->columns = col - 1;
-    game->rows = rows;
-	return(game->map);
+	game->rows = rows;
+	return (game->map);
 }

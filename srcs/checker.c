@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:45:07 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/09 16:24:10 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/10 14:27:53 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	check_dimension(t_map *game)
 		i++;
 	}
 }
+
 int	check_extension(char *arg, t_map *game)
 {
 	int		i;
@@ -69,7 +70,7 @@ void	check_wall_lenght(t_map *game)
 	while (j < game->columns)
 	{
 		if (game->map[0][j] != '1' || game->map[game->rows - 1][j] != '1')
-				errors(game, E_WALL);
+			errors(game, E_WALL);
 		j++;
 	}
 }
@@ -81,9 +82,8 @@ void	check_wall_width(t_map *game)
 	i = 0;
 	while (i < game->rows)
 	{
-		if (game->map[i][0] != '1'|| game->map[i][game->columns])
+		if (game->map[i][0] != '1' || game->map[i][game->columns])
 			errors(game, E_WALL);
 		i++;
 	}
-
 }

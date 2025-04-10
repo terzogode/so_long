@@ -6,15 +6,15 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 17:32:47 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/09 17:12:22 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/10 14:29:30 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int main(int argc, char **argv) 
+int	main(int argc, char **argv)
 {
-	t_map 	game;
+	t_map	game;
 
 	game = (t_map){0};
 	if (argc != 2)
@@ -24,6 +24,5 @@ int main(int argc, char **argv)
 	}
 	checker(argv[1], &game);
 	free_maptrix(&game);
-	
 	return (0);
 }

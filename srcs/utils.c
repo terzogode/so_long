@@ -6,14 +6,13 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:12:10 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/09 17:04:10 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/10 14:30:28 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
-void open_file(char *argv, t_map *game)
+void	open_file(char *argv, t_map *game)
 {
 	game->fd = open(argv, __O_DIRECTORY);
 	if (game->fd != -1)
@@ -30,9 +29,9 @@ void open_file(char *argv, t_map *game)
 	}
 }
 
-void	print_map(t_map *game) 
+void	print_map(t_map *game)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i < game->rows)
@@ -42,10 +41,9 @@ void	print_map(t_map *game)
 	}
 }
 
-
 size_t	lenchar(char *str, char s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != s)

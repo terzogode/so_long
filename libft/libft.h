@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:24:02 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/07 20:30:49 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/10 14:26:58 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_calloc(size_t num, size_t size);
 void	ft_bzero(void *s, size_t n);
 
-
 //str_conversion
 int		ft_atoi(const char *nptr);
 int		ft_toupper(int c);
@@ -57,7 +56,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
-char	**ft_split(char const *s, char c); 
+char	**ft_split(char const *s, char c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strdup(const char *s);
