@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 17:32:47 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/10 15:34:18 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/12 20:45:30 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	main(int argc, char **argv)
 		exit(1);
 	}
 	checker(argv[1], &game);
-	free_maptrix(&game);
+	//free_maptrix(&game);
+	letsgoski(&game);
 	return (0);
 }
 

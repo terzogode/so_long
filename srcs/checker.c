@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:45:07 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/10 14:27:53 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/11 15:06:46 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	checker(char *argv, t_map *game)
 	check_char(game);
 	check_player_exit(game);
 	check_coll(game);
-	print_map(game);
+	//print_map(game);
 }
 
 void	check_dimension(t_map *game)

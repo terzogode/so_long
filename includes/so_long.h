@@ -6,12 +6,14 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 17:32:44 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/10 14:26:19 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/12 20:43:01 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
+# define PIX 32
 
 # include <stdio.h>
 # include <string.h>
@@ -20,6 +22,16 @@
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 
+typedef struct s_img
+{
+	void	*wall;
+	void	*floor;
+	void	*player;
+	void	*enemies;
+	void	*coll;
+	void	*exit;
+}	t_img;
+
 typedef struct s_map
 {
 	char	**map;
@@ -27,6 +39,9 @@ typedef struct s_map
 	size_t	columns;
 	int		fd;
 	int		steps;
+	void	*mlx;
+	void	*window;
+	t_img	img;
 }	t_map;
 
 typedef enum e_error
@@ -64,5 +79,11 @@ size_t	lenchar(char *str, char s);
 
 //errors
 void	errors(t_map *game, int err);
+
+//letsgoski
+void	letsgoski(t_map *game);
+void	init_map(t_map *game);
+void	initialize_images(t_map *game);
+
 
 #endif
