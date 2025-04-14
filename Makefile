@@ -6,14 +6,15 @@
 #    By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/08 11:07:37 by gcollet           #+#    #+#              #
-#    Updated: 2025/04/12 20:39:44 by mbrighi          ###   ########.fr        #
+#    Updated: 2025/04/14 22:02:55 by mbrighi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PROG	= so_long
 
 SRCS 	= srcs/so_long.c srcs/checker.c srcs/matrix_maker_free.c srcs/errors.c \
-			srcs/utils.c srcs/check_map.c srcs/letsgoski.c
+			srcs/utils.c srcs/check_map.c srcs/letsgoski.c srcs/initialize.c \
+			srcs/check_coll.c
 
 HEADER	= -Iincludes
 

@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:12:10 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/12 19:01:39 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/14 22:45:27 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,4 @@ void	print_map(t_map *game)
 		ft_printf("%s\n", game->map[i]);
 		i++;
 	}
-}
-
-size_t	lenchar(char *str, char s)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != s)
-	{
-		i++;
-	}
-	return (i);
 }

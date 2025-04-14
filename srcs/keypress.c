@@ -1,28 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   keypress.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/05 17:32:47 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/14 22:59:44 by mbrighi          ###   ########.fr       */
+/*   Created: 2025/04/14 19:53:56 by mbrighi           #+#    #+#             */
+/*   Updated: 2025/04/14 19:55:26 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-int	main(int argc, char **argv)
-{
-	t_map	game;
-
-	game = (t_map){0};
-	if (argc != 2)
-	{
-		ft_printf("Error: wrong numbers of arguments");
-		exit(1);
-	}
-	checker(argv[1], &game);
-	letsgoski(&game);
-	return (0);
-}
+int mlx_hook(void *win_ptr, int x_event, int x_mask, int (*funct)(), void *param);

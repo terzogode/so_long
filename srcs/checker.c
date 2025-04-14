@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:45:07 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/11 15:06:46 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/14 22:59:58 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,16 @@ void	checker(char *argv, t_map *game)
 	check_wall_lenght(game);
 	check_wall_width(game);
 	check_char(game);
-	check_player_exit(game);
+	check_player(game);
+	check_exit(game);
 	check_coll(game);
-	//print_map(game);
-}
-
-void	check_dimension(t_map *game)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < game->rows)
+	coll_dup_map(game);
+	if (check_reachability(game) == 0)
 	{
-		if (ft_strlen(game->map[i]) != game->columns)
-			errors(game, E_MAP_DIMENSION);
-		i++;
+		free_maptrix(game, game->coll_check);
+		free_maptrix(game, game->map);
+		ft_printf("The eternal quest causes the player to die\n");
+		exit (0);
 	}
 }
 
@@ -60,6 +55,19 @@ int	check_extension(char *arg, t_map *game)
 		i++;
 	}
 	return (1);
+}
+
+void	check_dimension(t_map *game)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < game->rows)
+	{
+		if (ft_strlen(game->map[i]) != game->columns)
+			errors(game, E_MAP_DIMENSION);
+		i++;
+	}
 }
 
 void	check_wall_lenght(t_map *game)

@@ -6,23 +6,23 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:52:35 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/10 14:31:22 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/14 22:58:23 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_maptrix(t_map *game)
+void	free_maptrix(t_map *game, char **matrix)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (game->map[i] != NULL)
+	while (i < game->rows)
 	{
-		free(game->map[i]);
+		free(matrix[i]);
 		i++;
 	}
-	free(game->map);
+	free(matrix);
 }
 
 void	final_map(char *argv, size_t rows, t_map *game)
@@ -35,7 +35,7 @@ void	final_map(char *argv, size_t rows, t_map *game)
 	game->map = ft_calloc(rows + 1, sizeof(char *));
 	if (!game->map)
 	{
-		ft_printf("I see no map up here");
+		ft_printf ("I see no map up here");
 		exit (1);
 	}
 	open_file(argv, game);
