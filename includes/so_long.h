@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 17:32:44 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/14 23:03:35 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/14 23:47:43 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ typedef enum e_error
 	E_WALL,
 	E_EMPTY_MAP,
 	E_IMAX,
+	E_UNREACHABLE_COLL,
+	E_
 }	t_error;
 
 //checker

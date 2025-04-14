@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:09:08 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/14 21:36:55 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/14 23:41:45 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ void	check_char(t_map *game)
 		{
 			if (game->map[i][j] != '0' && game->map[i][j] != '1' &&
 				game->map[i][j] != 'E' && game->map[i][j] != 'P' &&
-				game->map[i][j] != 'C' && game->map[i][j] != '\n' &&
-				game->map[i][j] != 'G')
+				game->map[i][j] != 'C' && game->map[i][j] != 'G')
 			{
 				ft_printf("Char error in the map at row %d, col %d", i, j);
 				errors(game, E_CHAR_ERROR);

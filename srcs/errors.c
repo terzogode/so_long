@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:22:03 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/14 23:18:39 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/14 23:46:21 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,16 @@ void	errors(t_map *game, int err)
 		ft_printf("I understand you like open world, but you know I can't\n");
 	if (err == E_IMAX)
 		ft_printf("Go find yourself or at least a valid imax\n");
+	free_maptrix(game, game->map);
+	if (game->coll_check != NULL)
+		free_maptrix(game, game->coll_check);
+	exit (1);
+}
+
+void	errors1(t_map *game, int err)
+{
+	if (err == E_UNREACHABLE_COLL)
+		ft_printf("The eternal quest causes the player to die\n");
 	free_maptrix(game, game->map);
 	if (game->coll_check != NULL)
 		free_maptrix(game, game->coll_check);

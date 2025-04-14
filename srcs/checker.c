@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:45:07 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/14 22:59:58 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/14 23:46:55 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,7 @@ void	checker(char *argv, t_map *game)
 	check_coll(game);
 	coll_dup_map(game);
 	if (check_reachability(game) == 0)
-	{
-		free_maptrix(game, game->coll_check);
-		free_maptrix(game, game->map);
-		ft_printf("The eternal quest causes the player to die\n");
-		exit (0);
-	}
+		errors1(game, E_UNREACHABLE_COLL);
 }
 
 int	check_extension(char *arg, t_map *game)
