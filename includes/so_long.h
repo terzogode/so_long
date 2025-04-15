@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 17:32:44 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/15 19:02:07 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/16 00:11:34 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,18 @@ typedef struct s_img
 	void	*coll;
 }	t_img;
 
+typedef struct s_pg
+{
+	void	*pg[2];
+	int		pg_start_x;
+	int		pg_start_y;
+	int		idx_pg;
+	int		pg_stat[2];
+	void	*death[5];
+	int		idx_death;
+	int		pg_moves;
+}	t_pg;
+
 typedef	struct timeval	t_time;
 
 typedef struct s_map
@@ -46,21 +58,19 @@ typedef struct s_map
 	void	*window;
 	int		height;
 	int		width;
-	int		num_coll;
+	int		tot_coll;
+	int		coll_coll;
 	int		exit_y;
 	int		exit_x;
 	t_img	img;
-	void	*exit_win[5];
-	void	*death[5];
+	void	*exit_win[3];
+	int		idx_exit;
 	void	*gob[4];
 	t_time	last_sec;
-	void	*stat_exit;
+	void	*stat_exit[2];
 	int		idx_gob;
-	void	*pg[2];
-	int		pg_start_x;
-	int		pg_start_y;
-	int		idx_pg;
-}	t_map;
+	t_pg	pg;
+}	t_game;
 
 typedef enum e_error
 {
@@ -74,57 +84,64 @@ typedef enum e_error
 	E_EMPTY_MAP,
 	E_IMAX,
 	E_UNREACHABLE_COLL,
-	E_
+	E_EASY_EXIT
 }	t_error;
 
 //checker
-void	checker(char *argv, t_map *game);
-int		check_extension(char *arg, t_map *game);
-void	check_dimension(t_map *game);
-void	check_wall_lenght(t_map *game);
-void	check_wall_width(t_map *game);
+void	checker(char *argv, t_game *game);
+int		check_extension(char *arg, t_game *game);
+void	check_dimension(t_game *game);
+void	check_wall_lenght(t_game *game);
+void	check_wall_width(t_game *game);
 
 //check_map
-void	check_char(t_map *game);
-void	check_coll(t_map *game);
-void	check_player(t_map *game);
-void	check_exit(t_map *game);
+void	check_char(t_game *game);
+void	check_coll(t_game *game);
+void	check_player(t_game *game);
+void	check_exit(t_game *game);
 
 //check_coll
-void	flood_fill(t_map *game, size_t x, size_t y, bool exit_coll);
-int		check_coll_reachability(t_map *game);
-int		check_exit_reachability(t_map *game);
-char	**coll_dup_map(t_map *game);
-char	**exit_dup_map(t_map *game);
+void	flood_fill(t_game *game, size_t x, size_t y, bool exit_coll);
+int		check_coll_reachability(t_game *game);
+int		check_exit_reachability(t_game *game);
+char	**coll_dup_map(t_game *game);
+char	**exit_dup_map(t_game *game);
 
 //matrix_maker_free
-void	final_map(char *argv, size_t rows, t_map *game);
-void 	free_maptrix(t_map *game, char **matrix);
-char	**matrix_maker(char *argv, t_map *game);
+void	final_map(char *argv, size_t rows, t_game *game);
+void 	free_maptrix(t_game *game, char **matrix);
+char	**matrix_maker(char *argv, t_game *game);
 
 //utils
-void	open_file(char *argv, t_map *game);
-void	print_map(t_map *game);
+void	open_file(char *argv, t_game *game);
+void	print_map(t_game *game);
 
 //errors
-void	errors(t_map *game, int err);
-void	errors1(t_map *game, int err);
+void	errors(t_game *game, int err);
+void	errors1(t_game *game, int err);
 
 //letsgoski
-void	rendering(t_map *game);
-void	letsfill(t_map *game, int x, int y);
-void	letsgoski(t_map *game);
+void	rendering(t_game *game);
+void	letsfill(t_game *game, int x, int y);
+void	letsgoski(t_game *game);
+void	player_do_things(t_game *game);
+
 
 //initialize
-void	initialize_img(t_map *game);
-void	init_img_back(t_map *game);
-void	init_img_exit(t_map *game);
-void	init_img_death(t_map *game);
-void	init_img_gob(t_map *game);
+void	initialize_img(t_game *game);
+void	init_img_back(t_game *game);
+void	init_img_exit(t_game *game);
+void	init_img_death(t_game *game);
+void	init_img_gob(t_game *game);
 
 //update_sprite
-void	update_gob(t_map *game);
-int		update(t_map *game);
+void	update_gob(t_game *game);
+int		update(t_game *game);
+
+//keypress
+int		handle_key(int keycode, void *param);
+int		can_move_to(t_game *game, int x, int y);
+void	move_player(t_game *game, int dx, int dy);
 
 
 #endif

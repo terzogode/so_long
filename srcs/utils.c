@@ -6,13 +6,13 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:12:10 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/14 23:27:26 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/15 22:49:13 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	open_file(char *argv, t_map *game)
+void	open_file(char *argv, t_game *game)
 {
 	game->fd = open(argv, __O_DIRECTORY);
 	if (game->fd != -1)
@@ -29,7 +29,7 @@ void	open_file(char *argv, t_map *game)
 	}
 }
 
-void	print_map(t_map *game)
+void	print_map(t_game *game)
 {
 	size_t	i;
 

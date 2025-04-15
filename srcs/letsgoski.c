@@ -6,13 +6,13 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 19:13:49 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/15 19:00:30 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/15 23:59:35 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	rendering(t_map *game)
+void	rendering(t_game *game)
 {
 	int	x;
 	int	y;
@@ -31,9 +31,28 @@ void	rendering(t_map *game)
 		}
 		y++;
 	}
+	player_do_things(game);
+}
+void	player_do_things(t_game *game)
+{
+	if (game->pg.pg_stat[0] == 0)
+		mlx_put_image_to_window(game->mlx, game->window,
+			game->pg.pg[game->pg.idx_pg], game->pg.pg_start_x * PIX,
+			game->pg.pg_start_y * PIX);	
+	if (game->pg.pg_stat[0] == 1)
+		mlx_put_image_to_window(game->mlx, game->window,
+			game->pg.death[game->pg.idx_death], game->pg.pg_start_x * PIX,
+			game->pg.pg_start_y * PIX);
+	if(game->pg.pg_stat[1] == 0)
+		mlx_put_image_to_window(game->mlx, game->window,
+			game->stat_exit[0], game->exit_x * PIX, game->exit_y * PIX);
+	if(game->pg.pg_stat[1] == 1) //non sta uscendo
+		mlx_put_image_to_window(game->mlx, game->window,
+			game->stat_exit[1], game->exit_x * PIX,
+			game->exit_y * PIX);
 }
 
-void	letsfill(t_map *game, int x, int y)
+void	letsfill(t_game *game, int x, int y)
 {
 	if (game->map[y][x] == '1')
 		mlx_put_image_to_window(game->mlx, game->window,
@@ -43,20 +62,22 @@ void	letsfill(t_map *game, int x, int y)
 			game->img.floor, x * PIX, y * PIX);
 	else if (game->map[y][x] == 'E') //non sta uscendo
 		mlx_put_image_to_window(game->mlx, game->window,
-			game->stat_exit, x * PIX, y * PIX);
+			game->img.floor, x * PIX, y * PIX);
 	else if (game->map[y][x] == 'C')
 		mlx_put_image_to_window(game->mlx, game->window,
 			game->img.coll, x * PIX, y * PIX);
 	else if (game->map[y][x] == 'P') //non sta morendo e non sta uscendo
 		mlx_put_image_to_window(game->mlx, game->window,
-			game->pg[game->idx_pg], x * PIX, y * PIX);
+			game->img.floor, x * PIX, y * PIX);
 	else if (game->map[y][x] == 'G')
 		mlx_put_image_to_window(game->mlx, game->window,
 			game->gob[game->idx_gob], x * PIX, y * PIX);
 }
 
-void	letsgoski(t_map *game)
+void	letsgoski(t_game *game)
 {
+	game->pg.pg_stat[0] = 0;
+	game->pg.pg_stat[1] = 0;
 	game->mlx = mlx_init();
 	game->window = mlx_new_window(game->mlx, game->columns * PIX,
 			game->rows * PIX, "so_long");
@@ -69,6 +90,7 @@ void	letsgoski(t_map *game)
 	}
 	initialize_img(game);
 	rendering(game);
+	mlx_key_hook(game->window, handle_key, &game);
 	mlx_loop_hook(game->mlx, update, game);
 	mlx_loop(game->mlx);
 }

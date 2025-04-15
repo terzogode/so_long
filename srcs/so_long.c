@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 17:32:47 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/14 22:59:44 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/15 22:49:13 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	main(int argc, char **argv)
 {
-	t_map	game;
+	t_game	game;
 
-	game = (t_map){0};
+	game = (t_game){0};
 	if (argc != 2)
 	{
 		ft_printf("Error: wrong numbers of arguments");

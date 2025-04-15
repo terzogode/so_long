@@ -6,13 +6,13 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 20:49:28 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/15 16:21:01 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/15 22:49:13 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	flood_fill(t_map *game, size_t x, size_t y, bool exit_coll)
+void	flood_fill(t_game *game, size_t x, size_t y, bool exit_coll)
 {
 	if (x < 0 || x >= game->rows || y < 0 || y >= game->columns
 		|| (game->coll_check[x][y] != '0' && game->coll_check[x][y] != 'C'
@@ -32,15 +32,15 @@ void	flood_fill(t_map *game, size_t x, size_t y, bool exit_coll)
 	flood_fill(game, x, y + 1, exit_coll);
 }
 
-int	check_coll_reachability(t_map *game)
+int	check_coll_reachability(t_game *game)
 {
 	size_t	i;
 	size_t	j;
 	size_t	start_x;
 	size_t	start_y;
 
-	start_x = game->pg_start_x;
-	start_y = game->pg_start_y;
+	start_x = game->pg.pg_start_x;
+	start_y = game->pg.pg_start_y;
 	flood_fill(game, start_x, start_y, 1);
 	i = 0;
 	while (i < game->rows)
@@ -57,15 +57,15 @@ int	check_coll_reachability(t_map *game)
 	return (1);
 }
 
-int	check_exit_reachability(t_map *game)
+int	check_exit_reachability(t_game *game)
 {
 	size_t	i;
 	size_t	j;
 	size_t	start_x;
 	size_t	start_y;
 
-	start_x = game->pg_start_x;
-	start_y = game->pg_start_y;
+	start_x = game->pg.pg_start_x;
+	start_y = game->pg.pg_start_y;
 	flood_fill(game, start_x, start_y, 0);
 	i = 0;
 	while (i < game->rows)
@@ -82,7 +82,7 @@ int	check_exit_reachability(t_map *game)
 	return (1);
 }
 
-char	**coll_dup_map(t_map *game)
+char	**coll_dup_map(t_game *game)
 {
 	size_t	i;
 	size_t	j;
@@ -111,7 +111,7 @@ char	**coll_dup_map(t_map *game)
 	return (game->coll_check);
 }
 
-char	**exit_dup_map(t_map *game)
+char	**exit_dup_map(t_game *game)
 {
 	size_t	i;
 	size_t	j;

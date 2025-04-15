@@ -6,13 +6,13 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:52:35 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/14 22:58:23 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/15 22:49:13 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_maptrix(t_map *game, char **matrix)
+void	free_maptrix(t_game *game, char **matrix)
 {
 	size_t	i;
 
@@ -25,7 +25,7 @@ void	free_maptrix(t_map *game, char **matrix)
 	free(matrix);
 }
 
-void	final_map(char *argv, size_t rows, t_map *game)
+void	final_map(char *argv, size_t rows, t_game *game)
 {
 	size_t	i;
 	char	*line;
@@ -53,7 +53,7 @@ void	final_map(char *argv, size_t rows, t_map *game)
 		errors (game, E_EMPTY_MAP);
 }
 
-char	**matrix_maker(char *argv, t_map *game)
+char	**matrix_maker(char *argv, t_game *game)
 {
 	char	*line;
 	size_t	col;

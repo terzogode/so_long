@@ -6,13 +6,13 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:09:08 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/15 16:26:12 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/15 23:30:25 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	check_char(t_map *game)
+void	check_char(t_game *game)
 {
 	int	i;
 	int	j;
@@ -37,7 +37,7 @@ void	check_char(t_map *game)
 	}
 }
 
-void	check_coll(t_map *game)
+void	check_coll(t_game *game)
 {
 	int	rows;
 	int	columns;
@@ -57,12 +57,12 @@ void	check_coll(t_map *game)
 		}
 		rows++;
 	}
-	game->num_coll = coll;
+	game->tot_coll = coll;
 	if (coll < 1)
 		errors(game, E_COLLECTIBLE);
 }
 
-void	check_player(t_map *game)
+void	check_player(t_game *game)
 {
 	int	rows;
 	int	col;
@@ -79,8 +79,8 @@ void	check_player(t_map *game)
 			if (game->map[rows][col] == 'P')
 			{
 				player += 1;
-				game->pg_start_y = rows;
-				game->pg_start_x = col;
+				game->pg.pg_start_y = rows;
+				game->pg.pg_start_x = col;
 			}
 			col++;
 		}
@@ -90,7 +90,7 @@ void	check_player(t_map *game)
 		errors(game, E_PLAYER);
 }
 
-void	check_exit(t_map *game)
+void	check_exit(t_game *game)
 {
 	int	rows;
 	int	col;

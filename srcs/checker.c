@@ -6,13 +6,13 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:45:07 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/15 18:46:00 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/15 22:49:13 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	checker(char *argv, t_map *game)
+void	checker(char *argv, t_game *game)
 {
 	check_extension(argv, game);
 	matrix_maker(argv, game);
@@ -29,9 +29,11 @@ void	checker(char *argv, t_map *game)
 		errors1(game, E_UNREACHABLE_COLL);
 	if (check_exit_reachability(game) == 1)
 		errors1(game, E_EXIT);
+	free_maptrix(game, game->coll_check);
+	free_maptrix(game, game->exit_check);
 }
 
-int	check_extension(char *arg, t_map *game)
+int	check_extension(char *arg, t_game *game)
 {
 	int		i;
 	char	*ext;
@@ -55,7 +57,7 @@ int	check_extension(char *arg, t_map *game)
 	return (1);
 }
 
-void	check_dimension(t_map *game)
+void	check_dimension(t_game *game)
 {
 	size_t	i;
 
@@ -68,7 +70,7 @@ void	check_dimension(t_map *game)
 	}
 }
 
-void	check_wall_lenght(t_map *game)
+void	check_wall_lenght(t_game *game)
 {
 	size_t	j;
 
@@ -81,7 +83,7 @@ void	check_wall_lenght(t_map *game)
 	}
 }
 
-void	check_wall_width(t_map *game)
+void	check_wall_width(t_game *game)
 {
 	size_t	i;
 
