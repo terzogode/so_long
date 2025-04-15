@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:09:08 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/14 23:41:45 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/15 16:26:12 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,5 @@ void	check_exit(t_map *game)
 		rows++;
 	}
 	if (exit != 1)
-		errors(game, E_EXIT);
+		errors1(game, E_EXIT);
 }

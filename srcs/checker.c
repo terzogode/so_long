@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:45:07 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/14 23:46:55 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/15 18:46:00 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ void	checker(char *argv, t_map *game)
 	check_exit(game);
 	check_coll(game);
 	coll_dup_map(game);
-	if (check_reachability(game) == 0)
+	exit_dup_map(game);
+	if (check_coll_reachability(game) == 0)
 		errors1(game, E_UNREACHABLE_COLL);
+	if (check_exit_reachability(game) == 1)
+		errors1(game, E_EXIT);
 }
 
 int	check_extension(char *arg, t_map *game)
