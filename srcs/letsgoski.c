@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 19:13:49 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/15 23:59:35 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/16 01:11:41 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	letsgoski(t_game *game)
 	}
 	initialize_img(game);
 	rendering(game);
-	mlx_key_hook(game->window, handle_key, &game);
+	mlx_key_hook(game->window, handle_key, game);
 	mlx_loop_hook(game->mlx, update, game);
 	mlx_loop(game->mlx);
 }
