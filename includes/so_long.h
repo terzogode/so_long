@@ -6,14 +6,14 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 17:32:44 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/16 00:11:34 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/16 17:03:27 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define PIX 32
+# define PIX 64
 
 # include <time.h>
 # include <stdio.h>
@@ -38,7 +38,9 @@ typedef struct s_pg
 	int		pg_start_x;
 	int		pg_start_y;
 	int		idx_pg;
-	int		pg_stat[2];
+	bool	pg_is_dead;
+	bool	no_more_coll;
+	bool	pg_is_going_out;
 	void	*death[5];
 	int		idx_death;
 	int		pg_moves;
@@ -63,11 +65,11 @@ typedef struct s_map
 	int		exit_y;
 	int		exit_x;
 	t_img	img;
-	void	*exit_win[3];
+	void	*exit_win[5];
 	int		idx_exit;
 	void	*gob[4];
 	t_time	last_sec;
-	void	*stat_exit[2];
+	void	*stat_exit[3];
 	int		idx_gob;
 	t_pg	pg;
 }	t_game;
@@ -125,6 +127,8 @@ void	rendering(t_game *game);
 void	letsfill(t_game *game, int x, int y);
 void	letsgoski(t_game *game);
 void	player_do_things(t_game *game);
+void	player_is_gone(t_game *game);
+
 
 
 //initialize

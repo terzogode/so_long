@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:53:56 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/16 01:10:43 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/16 16:18:32 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	move_player(t_game *game, int dx, int dy)
 	{
 		if (next_tile == 'C') // Se c'è un collezionabile
 			game->coll_coll++;
-		
 		// Aggiorna la mappa e sposta il giocatore
 		game->map[game->pg.pg_start_y][game->pg.pg_start_x] = '0';
 		game->map[new_y][new_x] = 'P';
@@ -62,17 +61,14 @@ int	can_move_to(t_game *game, int x, int y)
 	return (0);
 }
 
-	if (game->map[y][x] == '1') // muro
+	if (game->map[y][x] == '1')
 		return (0);
-	if (game->map[y][x] == 'E')
+	if (game->map[y][x] == 'E' && game->pg.pg_is_dead)
+		return (0);	
+	if (game->map[y][x] == 'G')
 	{
-		if (game->coll_coll == game->tot_coll)
-		{
-			//game->pg.pg_stat[1] == 1;
-			return (1); // può vincere
-		}
-		else
-			return (0); // uscita ma non ancora disponibile
+		game->pg.pg_is_dead = 1;
+		return (0);
 	}
 	return (1); // spazio vuoto o collezionabile
 }
