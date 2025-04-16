@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 17:09:09 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/16 17:22:41 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/16 19:03:04 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,18 @@
 void kill_em_all(t_game *game)
 {
 	cleaning(game);
+	mlx_destroy_window(game->mlx, game->window);
 	mlx_destroy_display(game->mlx);
 	free_maptrix(game, game->map);
-	
+	free(game->mlx);
+	exit (0);	
 }
 void cleaning(t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->img.wall);
 	mlx_destroy_image(game->mlx, game->img.floor);
-	mlx_destroy_image(game->mlx, game->img.coll);
+	mlx_destroy_image(game->mlx, game->img.coll[0]);
+	mlx_destroy_image(game->mlx, game->img.coll[1]);
 	mlx_destroy_image(game->mlx, game->pg.pg[0]);
 	mlx_destroy_image(game->mlx, game->pg.pg[1]);
 	mlx_destroy_image(game->mlx, game->stat_exit[0]);

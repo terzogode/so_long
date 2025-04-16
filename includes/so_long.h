@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 17:32:44 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/16 17:03:27 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/16 19:00:28 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ typedef struct s_img
 {
 	void	*wall;
 	void	*floor;
-	void	*coll;
+	void	*coll[2];
+	int		idx_coll;
 }	t_img;
 
 typedef struct s_pg
@@ -146,6 +147,10 @@ int		update(t_game *game);
 int		handle_key(int keycode, void *param);
 int		can_move_to(t_game *game, int x, int y);
 void	move_player(t_game *game, int dx, int dy);
+
+//cleaning
+void	kill_em_all(t_game *game);
+void 	cleaning(t_game *game);
 
 
 #endif

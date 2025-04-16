@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 19:13:49 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/16 16:31:10 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/16 19:02:38 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	letsfill(t_game *game, int x, int y)
 			game->img.floor, x * PIX, y * PIX);
 	else if (game->map[y][x] == 'C')
 		mlx_put_image_to_window(game->mlx, game->window,
-			game->img.coll, x * PIX, y * PIX);
+			game->img.coll[game->img.idx_coll], x * PIX, y * PIX);
 	else if (game->map[y][x] == 'G')
 		mlx_put_image_to_window(game->mlx, game->window,
 			game->gob[game->idx_gob], x * PIX, y * PIX);

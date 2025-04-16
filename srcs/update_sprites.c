@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:01:04 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/16 17:03:34 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/16 19:11:29 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,17 @@ void	update_gob(t_game *game)
 	game->idx_gob = (game->idx_gob + 1) % 4;
 }
 
+void	update_coll(t_game *game)
+{
+	game->img.idx_coll = (game->img.idx_coll + 1) % 2;
+}
+
 void	update_player(t_game *game)
 {
 	if (game->pg.pg_is_dead && game->pg.idx_death == 4)
-		exit (1);
+		kill_em_all(game);
 	if (game->idx_exit == 4)
-		exit (1);
+		kill_em_all(game);
 	if (!game->pg.pg_is_dead && !game->pg.pg_is_going_out)
 		game->pg.idx_pg = (game->pg.idx_pg + 1) % 2;
 	if (game->pg.pg_is_going_out && game->pg.no_more_coll)
@@ -50,9 +55,10 @@ int	update(t_game *game)
 	if (game->coll_coll == game->tot_coll)
 			game->pg.no_more_coll = 1;
 		
-	if (now - old >= 0.5)
+	if (now - old >= 0.3)
 	{
 		update_gob(game);
+		update_coll(game);
 		update_player(game);
 		rendering(game);
 		game->last_sec = current_sec;

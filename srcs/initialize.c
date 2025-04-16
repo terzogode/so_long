@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:23:14 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/16 17:06:15 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/16 19:04:42 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,21 @@ void	init_img_back(t_game *game)
 			&game->width, &game->height);
 	game->img.floor = mlx_xpm_file_to_image(game->mlx, "sprite/floor.xpm",
 			&game->width, &game->height);
-	game->img.coll = mlx_xpm_file_to_image(game->mlx, "sprite/coll.xpm",
+	game->img.coll[0] = mlx_xpm_file_to_image(game->mlx, "sprite/coll.xpm",
+			&game->width, &game->height);
+	game->img.coll[1] = mlx_xpm_file_to_image(game->mlx, "sprite/coll1.xpm",
 			&game->width, &game->height);
 	game->pg.pg[0] = mlx_xpm_file_to_image(game->mlx, "sprite/pg0.xpm",
 			&game->width, &game->height);
 	game->pg.pg[1] = mlx_xpm_file_to_image(game->mlx, "sprite/pg1.xpm",
 			&game->width, &game->height);
 	if (!game->img.wall || !game->img.floor || !game->pg.pg[0]
-		|| !game->pg.pg[1] || !game->img.coll)
+		|| !game->pg.pg[1] || !game->img.coll[0] || !game->img.coll[1])
 		errors(game, E_IMAX);
 }
 
 void	init_img_exit(t_game *game)
 {
-	write(1, "YOLO", 1);
 	game->stat_exit[0] = mlx_xpm_file_to_image(game->mlx,
 			"sprite/exit/exit_0.xpm", &game->width, &game->height);
 	game->stat_exit[1] = mlx_xpm_file_to_image(game->mlx,
