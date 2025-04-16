@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:53:56 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/16 16:18:32 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/16 23:34:28 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ int	handle_key(int keycode, void *param)
 {
 	t_game *game = (t_game *)param;
 	(void)game;
-	printf("Tasto premuto: %d\n", keycode);
 	if (keycode == 65307)
-		errors1(param, E_EASY_EXIT);
+	{
+		ft_printf("I spent lot of time on this game! Play it, please!\n");
+		kill_em_all(game);
+	}
 	if (keycode == 119 || keycode == 65362)
 		move_player(param, 0, -1);
 	if (keycode == 115 || keycode == 65364)

@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:45:07 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/15 22:49:13 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/16 23:24:33 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	checker(char *argv, t_game *game)
 	exit_dup_map(game);
 	if (check_coll_reachability(game) == 0)
 		errors1(game, E_UNREACHABLE_COLL);
-	if (check_exit_reachability(game) == 1)
+	if (check_exit_reachability(game) == 0)
 		errors1(game, E_EXIT);
 	free_maptrix(game, game->coll_check);
 	free_maptrix(game, game->exit_check);

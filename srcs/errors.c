@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:22:03 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/15 22:49:13 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/16 23:34:38 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ void	errors1(t_game *game, int err)
 		ft_printf("The eternal quest causes the player to die\n");
 	if (err == E_EXIT)
 		ft_printf("Wanna play forever? You need to leave\n");
-	if (err == E_EASY_EXIT)
-		ft_printf("I spent lot of time on this game! Play it, please!\n");
 	free_maptrix(game, game->map);
 	if (game->coll_check != NULL)
 		free_maptrix(game, game->coll_check);
