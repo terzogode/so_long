@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:23:14 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/16 19:04:42 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/17 01:10:43 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	init_img_exit(t_game *game)
 			"sprite/exit/exit_1.xpm", &game->width, &game->height);
 	game->exit_win[0] = mlx_xpm_file_to_image(game->mlx,
 			"sprite/exit/win_0.xpm", &game->width, &game->height);
-	game->exit_win[1]= mlx_xpm_file_to_image(game->mlx,
+	game->exit_win[1] = mlx_xpm_file_to_image(game->mlx,
 			"sprite/exit/win_1.xpm", &game->width, &game->height);
 	game->exit_win[2] = mlx_xpm_file_to_image(game->mlx,
 			"sprite/exit/win_2.xpm", &game->width, &game->height);
@@ -84,7 +84,6 @@ void	init_img_death(t_game *game)
 
 void	init_img_gob(t_game *game)
 {
-
 	game->gob[0] = mlx_xpm_file_to_image(game->mlx,
 			"sprite/gob/gob0.xpm", &game->width, &game->height);
 	game->gob[1] = mlx_xpm_file_to_image(game->mlx,

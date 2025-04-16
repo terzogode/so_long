@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:12:10 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/15 22:49:13 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/17 01:10:08 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,20 @@ void	print_map(t_game *game)
 		ft_printf("%s\n", game->map[i]);
 		i++;
 	}
+}
+
+void	print_on_screen(t_game *game)
+{
+	char	*str;
+
+	if (game->pg.pg_temp_move != game->pg.pg_moves)
+	{
+		str = ft_itoa(game->pg.pg_moves);
+		ft_printf("%s\n", str);
+		game->pg.pg_temp_move = game->pg.pg_moves;
+	}
+	else
+		str = ft_itoa(game->pg.pg_moves);
+	mlx_string_put(game->mlx, game->win, 50, 100, 0xFFFFFF, str);
+	free(str);
 }

@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 17:32:44 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/16 23:34:54 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/17 01:05:29 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,10 @@ typedef struct s_pg
 	void	*death[5];
 	int		idx_death;
 	int		pg_moves;
+	int		pg_temp_move;
 }	t_pg;
 
-typedef	struct timeval	t_time;
+typedef struct timeval	t_time;
 
 typedef struct s_map
 {
@@ -58,7 +59,7 @@ typedef struct s_map
 	size_t	columns;
 	int		fd;
 	void	*mlx;
-	void	*window;
+	void	*win;
 	int		height;
 	int		width;
 	int		tot_coll;
@@ -111,12 +112,13 @@ char	**exit_dup_map(t_game *game);
 
 //matrix_maker_free
 void	final_map(char *argv, size_t rows, t_game *game);
-void 	free_maptrix(t_game *game, char **matrix);
+void	free_maptrix(t_game *game, char **matrix);
 char	**matrix_maker(char *argv, t_game *game);
 
 //utils
 void	open_file(char *argv, t_game *game);
 void	print_map(t_game *game);
+void	print_on_screen(t_game *game);
 
 //errors
 void	errors(t_game *game, int err);
@@ -128,8 +130,6 @@ void	letsfill(t_game *game, int x, int y);
 void	letsgoski(t_game *game);
 void	player_do_things(t_game *game);
 void	player_is_gone(t_game *game);
-
-
 
 //initialize
 void	initialize_img(t_game *game);
@@ -145,11 +145,10 @@ int		update(t_game *game);
 //keypress
 int		handle_key(int keycode, void *param);
 int		can_move_to(t_game *game, int x, int y);
-void	move_player(t_game *game, int dx, int dy);
+void	move_player(t_game *game, int dx, int dy, int move);
 
 //cleaning
 void	kill_em_all(t_game *game);
-void 	cleaning(t_game *game);
-
+void	cleaning(t_game *game);
 
 #endif
