@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:53:56 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/17 01:07:16 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/17 17:17:47 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,15 @@ int	handle_key(int keycode, void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
-	if (keycode == 65307)
-	{
-		ft_printf("I spent lot of time on this game! Play it, please!\n");
+	if (keycode == XK_Escape)
 		kill_em_all(game);
-	}
-	if (keycode == 119 || keycode == 65362)
+	if (keycode == XK_Up || keycode == XK_w)
 		move_player(param, 0, -1, 0);
-	if (keycode == 115 || keycode == 65364)
+	if (keycode == XK_Down || keycode == XK_s)
 		move_player(param, 0, 1, 1);
-	if (keycode == 97 || keycode == 65361)
+	if (keycode == XK_Left || keycode == XK_a)
 		move_player(param, -1, 0, 2);
-	if (keycode == 100 || keycode == 65363)
+	if (keycode == XK_Right || keycode == XK_d)
 		move_player(param, 1, 0, 3);
 	return (0);
 }
@@ -45,7 +42,7 @@ void	move_player(t_game *game, int dx, int dy, int move)
 	if (can_move_to(game, new_x, new_y) == 1)
 	{
 		if (next_pos == 'C')
-			game->coll_coll++;
+			game->in.coll_coll++;
 		game->map[game->pg.pg_start_y][game->pg.pg_start_x] = '0';
 		game->map[new_y][new_x] = 'P';
 		game->pg.pg_start_x = new_x;

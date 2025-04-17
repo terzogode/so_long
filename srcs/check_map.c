@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:09:08 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/15 23:30:25 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/17 16:01:27 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	check_coll(t_game *game)
 		}
 		rows++;
 	}
-	game->tot_coll = coll;
+	game->in.tot_coll = coll;
 	if (coll < 1)
 		errors(game, E_COLLECTIBLE);
 }
@@ -107,8 +107,8 @@ void	check_exit(t_game *game)
 			if (game->map[rows][col] == 'E')
 			{
 				exit += 1;
-				game->exit_y = rows;
-				game->exit_x = col;
+				game->in.exit_y = rows;
+				game->in.exit_x = col;
 			}
 			col++;
 		}

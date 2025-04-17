@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 19:13:49 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/17 15:18:01 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/17 15:58:02 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,19 @@ void	player_do_things(t_game *game)
 			game->pg.pg_start_y * PIX);
 	if (!game->pg.pg_is_going_out && !game->pg.no_more_coll)
 		mlx_put_image_to_window(game->mlx, game->win,
-			game->stat_exit[0], game->exit_x * PIX, game->exit_y * PIX);
+			game->id.stat_exit[0], game->in.exit_x * PIX,
+			game->in.exit_y * PIX);
 	if (game->pg.pg_is_going_out && !game->pg.no_more_coll)
 		mlx_put_image_to_window(game->mlx, game->win,
-			game->stat_exit[1], game->exit_x * PIX,
-			game->exit_y * PIX);
+			game->id.stat_exit[1], game->in.exit_x * PIX,
+			game->in.exit_y * PIX);
 	if (!game->pg.pg_is_going_out && game->pg.no_more_coll)
 		mlx_put_image_to_window(game->mlx, game->win,
-			game->stat_exit[2], game->exit_x * PIX,
-			game->exit_y * PIX);
+			game->id.stat_exit[2], game->in.exit_x * PIX,
+			game->in.exit_y * PIX);
 	if (game->pg.no_more_coll && game->pg.pg_is_going_out)
 		mlx_put_image_to_window(game->mlx, game->win,
-			game->exit_win[game->idx_exit], game->pg.pg_start_x * PIX,
+			game->id.exit_win[game->id.idx_exit], game->pg.pg_start_x * PIX,
 			game->pg.pg_start_y * PIX);
 }
 
@@ -74,7 +75,7 @@ void	letsfill(t_game *game, int x, int y)
 			game->img.coll[game->img.idx_coll], x * PIX, y * PIX);
 	else if (game->map[y][x] == 'G')
 		mlx_put_image_to_window(game->mlx, game->win,
-			game->gob[game->idx_gob], x * PIX, y * PIX);
+			game->id.gob[game->id.idx_gob], x * PIX, y * PIX);
 }
 
 void	letsgoski(t_game *game)

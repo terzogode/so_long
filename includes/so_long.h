@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 17:32:44 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/17 15:23:50 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/17 17:18:19 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <X11/keysym.h>
 # include <stdbool.h>
 # include "../minilibx-linux/mlx_int.h"
 # include <sys/time.h>
@@ -51,6 +52,24 @@ typedef struct s_pg
 
 typedef struct timeval	t_time;
 
+typedef struct s_id
+{
+	void	*exit_win[5];
+	void	*gob[4];
+	void	*stat_exit[3];
+	int		idx_exit;
+	int		idx_gob;
+}	t_id;
+
+typedef struct s_in
+{
+	int		tot_coll;
+	int		coll_coll;
+	int		exit_y;
+	int		exit_x;
+	int		winner_or_loser;
+}	t_in;
+
 typedef struct s_map
 {
 	char	**map;
@@ -63,15 +82,8 @@ typedef struct s_map
 	int		fd;
 	int		height;
 	int		width;
-	int		tot_coll;
-	int		coll_coll;
-	int		exit_y;
-	int		exit_x;
-	int		idx_exit;
-	int		idx_gob;
-	void	*exit_win[5];
-	void	*gob[4];
-	void	*stat_exit[3];
+	t_in	in;
+	t_id	id;
 	t_image	img;
 	t_time	last_sec;
 	t_pg	pg;
