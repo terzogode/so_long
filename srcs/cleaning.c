@@ -6,13 +6,13 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 17:09:09 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/17 01:09:42 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/17 15:18:37 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	kill_em_all(t_game *game)
+int	kill_em_all(t_game *game)
 {
 	cleaning(game);
 	mlx_destroy_window(game->mlx, game->win);
@@ -20,6 +20,7 @@ void	kill_em_all(t_game *game)
 	free_maptrix(game, game->map);
 	free(game->mlx);
 	exit (0);
+	return (0);
 }
 
 void	cleaning(t_game *game)

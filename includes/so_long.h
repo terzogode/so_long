@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 17:32:44 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/17 01:05:29 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/17 15:23:50 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,18 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include "../minilibx-linux/mlx_int.h"
 # include <sys/time.h>
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 
-typedef struct s_img
+typedef struct s_image
 {
 	void	*wall;
 	void	*floor;
 	void	*coll[2];
 	int		idx_coll;
-}	t_img;
+}	t_image;
 
 typedef struct s_pg
 {
@@ -57,22 +58,22 @@ typedef struct s_map
 	char	**exit_check;
 	size_t	rows;
 	size_t	columns;
-	int		fd;
 	void	*mlx;
 	void	*win;
+	int		fd;
 	int		height;
 	int		width;
 	int		tot_coll;
 	int		coll_coll;
 	int		exit_y;
 	int		exit_x;
-	t_img	img;
-	void	*exit_win[5];
 	int		idx_exit;
-	void	*gob[4];
-	t_time	last_sec;
-	void	*stat_exit[3];
 	int		idx_gob;
+	void	*exit_win[5];
+	void	*gob[4];
+	void	*stat_exit[3];
+	t_image	img;
+	t_time	last_sec;
 	t_pg	pg;
 }	t_game;
 
@@ -148,7 +149,7 @@ int		can_move_to(t_game *game, int x, int y);
 void	move_player(t_game *game, int dx, int dy, int move);
 
 //cleaning
-void	kill_em_all(t_game *game);
+int		kill_em_all(t_game *game);
 void	cleaning(t_game *game);
 
 #endif

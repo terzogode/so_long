@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:45:07 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/16 23:24:33 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/17 15:08:06 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	check_wall_width(t_game *game)
 	i = 0;
 	while (i < game->rows)
 	{
-		if (game->map[i][0] != '1' || game->map[i][game->columns])
+		if (game->map[i][0] != '1' || game->map[i][game->columns - 1] != '1')
 			errors(game, E_WALL);
 		i++;
 	}

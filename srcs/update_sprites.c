@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:01:04 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/17 01:08:19 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/17 15:02:04 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	update(t_game *game)
 	gettimeofday(&current_sec, NULL);
 	now = current_sec.tv_sec + current_sec.tv_usec / 1e6;
 	old = game->last_sec.tv_sec + game->last_sec.tv_usec / 1e6;
-	print_on_screen(game);
 	if ((game->pg.pg_start_x == game->exit_x
 			&& game->pg.pg_start_y == game->exit_y)
 		&& !game->pg.pg_is_dead)
@@ -66,6 +65,7 @@ int	update(t_game *game)
 		update_coll(game);
 		update_player(game);
 		rendering(game);
+		print_on_screen(game);
 		game->last_sec = current_sec;
 	}
 	return (0);
