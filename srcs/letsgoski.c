@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 19:13:49 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/17 15:58:02 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/17 17:50:18 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,11 @@ void	letsgoski(t_game *game)
 	game->win = mlx_new_window(game->mlx, game->columns * PIX,
 			game->rows * PIX, "so_long");
 	if (game->win == NULL)
-		ft_printf("There's no map up here\n");
+		ft_printf("Error: there's no map up here\n");
 	if (game->win == NULL)
 	{
-		ft_printf("Failed map\n");
-		exit (0);
+		ft_printf("Error: failed map\n");
+		exit (EXIT_FAILURE);
 	}
 	initialize_img(game);
 	rendering(game);

@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 17:32:47 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/15 22:49:13 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/17 17:51:12 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 	{
 		ft_printf("Error: wrong numbers of arguments");
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	checker(argv[1], &game);
 	letsgoski(&game);
-	return (0);
 }

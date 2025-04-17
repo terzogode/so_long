@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 17:32:44 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/17 17:18:19 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/17 18:04:15 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct s_map
 	t_id	id;
 	t_image	img;
 	t_time	last_sec;
+	t_time	last_gob_sec;
 	t_pg	pg;
 }	t_game;
 
@@ -152,7 +153,7 @@ void	init_img_death(t_game *game);
 void	init_img_gob(t_game *game);
 
 //update_sprite
-void	update_gob(t_game *game);
+void	update_gob(t_game *game, t_time current_time);
 int		update(t_game *game);
 
 //keypress

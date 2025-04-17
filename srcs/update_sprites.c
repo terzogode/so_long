@@ -6,15 +6,24 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:01:04 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/17 16:00:31 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/17 18:02:37 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	update_gob(t_game *game)
+void	update_gob(t_game *game, t_time current_time)
 {
-	game->id.idx_gob = (game->id.idx_gob + 1) % 4;
+	double	now;
+	double	old;
+	now = current_time.tv_sec + current_time.tv_usec / 1e6;
+	old = game->last_gob_sec.tv_sec + game->last_gob_sec.tv_usec / 1e6;
+
+	if ((now - old) >= 1.0)
+	{
+		game->id.idx_gob = (game->id.idx_gob + 1) % 4;
+		game->last_gob_sec = current_time;
+	}
 }
 
 void	update_coll(t_game *game)
@@ -59,9 +68,9 @@ int	update(t_game *game)
 		game->pg.pg_is_going_out = 0;
 	if (game->in.coll_coll == game->in.tot_coll)
 		game->pg.no_more_coll = 1;
-	if (now - old >= 0.3)
+	update_gob(game, current_sec);
+	if (now - old >= 0.2)
 	{
-		update_gob(game);
 		update_coll(game);
 		update_player(game);
 		rendering(game);

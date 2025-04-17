@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:22:03 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/16 23:34:38 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/17 17:47:22 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	errors(t_game *game, int err)
 {
+	ft_printf("Error: ");
 	if (err == E_EXTENSION)
 	{
 		ft_printf("If you don't use .ber I'm gonna use .berETTA\n");
@@ -42,6 +43,8 @@ void	errors(t_game *game, int err)
 
 void	errors1(t_game *game, int err)
 {
+	if (err != E_CHAR_ERROR)
+		ft_printf("Error: ");
 	if (err == E_UNREACHABLE_COLL)
 		ft_printf("The eternal quest causes the player to die\n");
 	if (err == E_EXIT)

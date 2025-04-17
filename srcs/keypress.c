@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:53:56 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/17 17:17:47 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/17 18:08:26 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ void	move_player(t_game *game, int dx, int dy, int move)
 		game->pg.pg_moves++;
 	}
 	if (move == 0)
-		mlx_string_put(game->mlx, game->win, 50, 50, 0xFFFFFF, "Moving Up");
+		mlx_string_put(game->mlx, game->win, 42, 42, 0xFFFFFF, "Moving Up");
 	if (move == 1)
-		mlx_string_put(game->mlx, game->win, 50, 50, 0xFFFFFF, "Moving Down");
+		mlx_string_put(game->mlx, game->win, 42, 42, 0xFFFFFF, "Moving Down");
 	if (move == 2)
-		mlx_string_put(game->mlx, game->win, 50, 50, 0xFFFFFF, "Moving Sx");
+		mlx_string_put(game->mlx, game->win, 42, 42, 0xFFFFFF, "Moving Sx");
 	if (move == 3)
-		mlx_string_put(game->mlx, game->win, 50, 50, 0xFFFFFF, "Moving Dx");
+		mlx_string_put(game->mlx, game->win, 42, 42, 0xFFFFFF, "Moving Dx");
 }
 
 int	can_move_to(t_game *game, int x, int y)

@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 20:49:28 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/17 17:19:56 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/17 17:53:16 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,13 @@ void	flood_fill(t_game *game, size_t x, size_t y, bool exit_coll)
 {
 	if (x < 0 || x >= game->rows || y < 0 || y >= game->columns
 		|| (game->coll_check[x][y] != '0' && game->coll_check[x][y] != 'C'
-		&& game->coll_check[x][y] != 'P' && game->coll_check[x][y] != 'E'))
+		&& game->coll_check[x][y] != 'P' && game->coll_check[x][y] != 'E'
+		&& exit_coll))
+		return ;
+	if (x < 0 || x >= game->rows || y < 0 || y >= game->columns
+		|| (game->exit_check[x][y] != '0' && game->exit_check[x][y] != 'C'
+		&& game->exit_check[x][y] != 'P' && game->exit_check[x][y] != 'E'
+		&& !exit_coll))
 		return ;
 	if (exit_coll)
 		game->coll_check[x][y] = '1';
