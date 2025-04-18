@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:09:08 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/17 17:46:52 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/18 17:34:03 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	check_coll(t_game *game)
 	}
 	game->in.tot_coll = coll;
 	if (coll < 1)
-		errors(game, E_COLLECTIBLE);
+		errors1(game, E_COLLECTIBLE);
 }
 
 void	check_player(t_game *game)
@@ -87,7 +87,7 @@ void	check_player(t_game *game)
 		rows++;
 	}
 	if (player != 1)
-		errors(game, E_PLAYER);
+		errors1(game, E_PLAYER);
 }
 
 void	check_exit(t_game *game)

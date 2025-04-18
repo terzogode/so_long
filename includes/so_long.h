@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 17:32:44 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/17 18:04:15 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/18 17:31:43 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,5 +164,7 @@ void	move_player(t_game *game, int dx, int dy, int move);
 //cleaning
 int		kill_em_all(t_game *game);
 void	cleaning(t_game *game);
+void	cleaning2(t_game *game);
+
 
 #endif

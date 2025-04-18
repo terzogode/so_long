@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 19:13:49 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/17 17:50:18 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/04/18 18:54:50 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,12 @@ void	letsfill(t_game *game, int x, int y)
 void	letsgoski(t_game *game)
 {
 	game->mlx = mlx_init();
+	if (!game->mlx)
+	{
+		ft_printf("Puzzi\n");
+		game->in.winner_or_loser = 4;
+		kill_em_all(game);
+	}
 	game->win = mlx_new_window(game->mlx, game->columns * PIX,
 			game->rows * PIX, "so_long");
 	if (game->win == NULL)

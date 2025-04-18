@@ -16,9 +16,9 @@ void	update_gob(t_game *game, t_time current_time)
 {
 	double	now;
 	double	old;
+
 	now = current_time.tv_sec + current_time.tv_usec / 1e6;
 	old = game->last_gob_sec.tv_sec + game->last_gob_sec.tv_usec / 1e6;
-
 	if ((now - old) >= 1.0)
 	{
 		game->id.idx_gob = (game->id.idx_gob + 1) % 4;
