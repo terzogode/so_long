@@ -6,7 +6,7 @@
 /*   By: mbrighi <mbrighi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:23:14 by mbrighi           #+#    #+#             */
-/*   Updated: 2025/04/17 15:58:55 by mbrighi          ###   ########.fr       */
+/*   Updated: 2025/05/05 14:33:23 by mbrighi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	init_img_back(t_game *game)
 			&game->width, &game->height);
 	if (!game->img.wall || !game->img.floor || !game->pg.pg[0]
 		|| !game->pg.pg[1] || !game->img.coll[0] || !game->img.coll[1])
-		errors(game, E_IMAX);
+		errors1(game, E_IMAX);
 }
 
 void	init_img_exit(t_game *game)
@@ -61,7 +61,7 @@ void	init_img_exit(t_game *game)
 		|| !game->id.stat_exit[2] || !game->id.exit_win[0] \
 		|| !game->id.exit_win[1] || !game->id.exit_win[2] \
 		|| !game->id.exit_win[3] || !game->id.exit_win[4])
-		errors(game, E_IMAX);
+		errors1(game, E_IMAX);
 }
 
 void	init_img_death(t_game *game)
@@ -79,7 +79,7 @@ void	init_img_death(t_game *game)
 	if (!game->pg.death[0] || !game->pg.death[1] \
 		|| !game->pg.death[2] || !game->pg.death[3] \
 		|| !game->pg.death[4])
-		errors(game, E_IMAX);
+		errors1(game, E_IMAX);
 }
 
 void	init_img_gob(t_game *game)
@@ -94,5 +94,5 @@ void	init_img_gob(t_game *game)
 			"sprite/gob/gob3.xpm", &game->width, &game->height);
 	if (!game->id.gob[0] || !game->id.gob[1] \
 		|| !game->id.gob[2] || !game->id.gob[3])
-		errors(game, E_IMAX);
+		errors1(game, E_IMAX);
 }
